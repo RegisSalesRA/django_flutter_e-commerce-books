@@ -36,3 +36,21 @@ class Book(models.Model):
     def __str__(self):
         return self.title
         
+
+
+class Favorite(models.Model):
+    product = models.ForeignKey(Book, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.Case)
+    isFavorit = models.BooleanField(default=False)
+
+    class Meta:
+        verbose_name = 'Favorite'
+        verbose_name_plural = 'Favorites'
+
+    def __repr__(self):
+        return f"BookID ={self.product.id}user={self.user.username}|ISFavorite={self.isFavorit}"
+
+    def __str__(self):
+        return f"BookID ={self.product.id}user={self.user.username}|ISFavorite={self.isFavorit}"
+
+
