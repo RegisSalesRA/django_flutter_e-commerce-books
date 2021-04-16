@@ -1,7 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
 
-
 class Category(models.Model):
     title = models.CharField(max_length=100)
     date = models.DateField(auto_now_add=True)
@@ -39,7 +38,7 @@ class Book(models.Model):
 
 
 class Favorite(models.Model):
-    product = models.ForeignKey(Book, on_delete=models.CASCADE)
+    book = models.ForeignKey(Book, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.Case)
     isFavorit = models.BooleanField(default=False)
 
@@ -48,9 +47,43 @@ class Favorite(models.Model):
         verbose_name_plural = 'Favorites'
 
     def __repr__(self):
-        return f"BookID ={self.product.id}user={self.user.username}|ISFavorite={self.isFavorit}"
+        return f"BookID ={self.book.id}user={self.user.username}|ISFavorite={self.isFavorit}"
 
     def __str__(self):
-        return f"BookID ={self.product.id}user={self.user.username}|ISFavorite={self.isFavorit}"
+        return f"BookID ={self.book.id}user={self.user.username}|ISFavorite={self.isFavorit}"
 
 
+class Cart(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    total = models.PositiveIntegerField()
+    isComplit = models.BooleanField(default=False)
+    date = models.DateField(auto_now_add=True)
+
+    class Meta:
+        verbose_name = 'Cart'
+        verbose_name_plural = 'Carts'
+
+    def __repr__(self):
+        return f"User={self.user.username}|ISComplit={self.isComplit}"
+
+    def __str__(self):
+        return f"User={self.user.username}|ISComplit={self.isComplit}"
+
+
+class CartBook(models.Model):
+    cart = models.ForeignKey(Cart, on_delete=models.CASCADE)
+    book = models.ManyToManyField(Book)
+    price = models.PositiveIntegerField()
+    quantity = models.PositiveIntegerField()
+    subtotal = models.PositiveIntegerField()
+
+    class Meta:
+        verbose_name = 'CartBook'
+        verbose_name_plural = 'CartBooks'
+
+    def __repr__(self):
+        return f"Cart=={self.cart.id}<==>CartBook:{self.id}==Qualtity=={self.quantity}"
+    
+    def __str__(self):
+        return f"Cart=={self.cart.id}<==>CartBook:{self.id}==Qualtity=={self.quantity}"
+    
