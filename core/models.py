@@ -87,3 +87,21 @@ class CartBook(models.Model):
     def __str__(self):
         return f"Cart=={self.cart.id}<==>CartBook:{self.id}==Qualtity=={self.quantity}"
     
+
+
+
+class Order(models.Model):
+    cart = models.OneToOneField(Cart, on_delete=models.CASCADE)
+    email = models.CharField(max_length=150)
+    phone = models.CharField(max_length=13)
+    address = models.CharField(max_length=200)
+
+    class Meta:
+        verbose_name = 'CartBook'
+        verbose_name_plural = 'CartBooks'
+
+    def __repr__(self):
+        return f"Order == {self.cart.id}"
+    
+    def __str__(self):
+        return f"Order == {self.cart.id}"
