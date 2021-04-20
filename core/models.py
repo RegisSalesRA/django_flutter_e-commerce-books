@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 
+
 class Category(models.Model):
     title = models.CharField(max_length=100)
     date = models.DateField(auto_now_add=True)
@@ -46,11 +47,11 @@ class Favorite(models.Model):
         verbose_name = 'Favorite'
         verbose_name_plural = 'Favorites'
 
-    # def __repr__(self):
-    #     return f"BookID ={self.book.id}user={self.user.username}|ISFavorite={self.isFavorit}"
+    def __repr__(self):
+        return f"BookID ={self.book.id}user={self.user.username}|ISFavorite={self.isFavorit}"
 
-    # def __str__(self):
-    #     return f"BookID ={self.book.id}user={self.user.username}|ISFavorite={self.isFavorit}"
+    def __str__(self):
+        return f"BookID ={self.book.id}user={self.user.username}|ISFavorite={self.isFavorit}"
 
 
 class Cart(models.Model):
@@ -63,11 +64,11 @@ class Cart(models.Model):
         verbose_name = 'Cart'
         verbose_name_plural = 'Carts'
 
-    # def __repr__(self):
-    #     return f"User={self.user.username}|ISComplit={self.isComplit}"
+    def __repr__(self):
+        return f"User={self.user.username}|ISComplit={self.isComplit}"
 
-    # def __str__(self):
-    #     return f"User={self.user.username}|ISComplit={self.isComplit}"
+    def __str__(self):
+        return f"User={self.user.username}|ISComplit={self.isComplit}"
 
 
 class CartBook(models.Model):
@@ -81,11 +82,11 @@ class CartBook(models.Model):
         verbose_name = 'CartBook'
         verbose_name_plural = 'CartBooks'
 
-    # def __repr__(self):
-    #     return f"Cart=={self.cart.id}<==>CartBook:{self.id}==Qualtity=={self.quantity}"
+    def __repr__(self):
+        return f"Cart=={self.cart.id}<==>CartBook:{self.id}==Qualtity=={self.quantity}"
     
-    # def __str__(self):
-    #     return f"Cart=={self.cart.id}<==>CartBook:{self.id}==Qualtity=={self.quantity}"
+    def __str__(self):
+        return f"Cart=={self.cart.id}<==>CartBook:{self.id}==Qualtity=={self.quantity}"
     
 
 
@@ -100,8 +101,8 @@ class Order(models.Model):
         verbose_name = 'CartBook'
         verbose_name_plural = 'CartBooks'
 
-    # def __repr__(self):
-    #     return f"Order == {self.cart.id}"
+    def __repr__(self):
+        return f"Order == {self.cart.id}"
     
-    # def __str__(self):
-    #     return f"Order == {self.cart.id}"
+    def __str__(self):
+        return f"Order == {self.cart.id}"
