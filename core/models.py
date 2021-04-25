@@ -79,8 +79,8 @@ class CartBook(models.Model):
     subtotal = models.PositiveIntegerField()
 
     class Meta:
-        verbose_name = 'CartBook'
-        verbose_name_plural = 'CartBooks'
+        verbose_name = 'Cart Book'
+        verbose_name_plural = 'Cart Books'
 
     def __repr__(self):
         return f"Cart=={self.cart.id}<==>CartBook:{self.id}==Qualtity=={self.quantity}"
@@ -98,8 +98,8 @@ class Order(models.Model):
     address = models.CharField(max_length=200)
 
     class Meta:
-        verbose_name = 'CartBook'
-        verbose_name_plural = 'CartBooks'
+        verbose_name = 'Order'
+        verbose_name_plural = 'Orders'
 
     def __repr__(self):
         return f"Order == {self.cart.id}"
