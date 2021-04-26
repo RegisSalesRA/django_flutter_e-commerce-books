@@ -12,5 +12,17 @@ class BookView(APIView):
 
     def get(self,request):
         query = Book.objects.all()
+        data = []
         serializers = BookSerializer(query,many=True)
+        for book in serializers.data:
+            fab_query = Favorite.objects.filter(
+                user=request.user).filter(book_id=book['id'])
+            if fab_query:
+                book['Favorite'] = fab_query[0].isFavorit
+            else:
+                book['Favorite'] = False
+            data.append(book)
         return Response(serializers.data)
+
+
+       
