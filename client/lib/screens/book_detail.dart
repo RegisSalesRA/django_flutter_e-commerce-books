@@ -13,7 +13,42 @@ class BookDetails extends StatelessWidget {
       appBar: AppBar(title: Text("Book Details")),
       body: Padding(
         padding: EdgeInsets.all(10),
-        child: Text(book.title),
+        child: ListView(
+          children: [
+            Image.network(
+              "http://10.0.2.2:8000${book.image}",
+              fit: BoxFit.cover,
+              height: 300,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text("Market Price : \$${book.marcketPrice.toString()}"),
+                    Text("Selling Price : \$${book.sellingPrice.toString()}"),
+                  ],
+                ),
+                RaisedButton.icon(
+                  color: Colors.green,
+                  onPressed: () {},
+                  icon: Icon(
+                    Icons.shopping_cart,
+                    color: Colors.white,
+                  ),
+                  label: Text(
+                    "Add to card",
+                    style: TextStyle(
+                      color: Colors.white,
+                    ),
+                  ),
+                )
+              ],
+            ),
+            Text(book.description)
+          ],
+        ),
       ),
     );
   }

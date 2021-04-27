@@ -11,6 +11,7 @@ class BookState with ChangeNotifier {
     String url = 'http://10.0.2.2:8000/api/v1/books/';
     try {
       http.Response response = await http.get(url, headers: {
+        "Content-Type": "application/json",
         'Authorization': "token a2b6c5549193a6bc0e9f42ba1ad559cc1e31c33e"
       });
       var data = json.decode(response.body) as List;
@@ -21,10 +22,32 @@ class BookState with ChangeNotifier {
         temp.add(book);
       });
       _books = temp;
+      notifyListeners();
       return true;
     } catch (e) {
       print(e);
       return false;
+    }
+  }
+
+  Future<void> favoriteButton(int id) async {
+    String url = 'http://10.0.2.2:8000/api/v1/favorite/';
+
+    try {
+      http.Response response = await http.post(url,
+          body: json.encode({
+            'id': id,
+          }),
+          headers: {
+            "Content-Type": "application/json",
+            'Authorization': "token a2b6c5549193a6bc0e9f42ba1ad559cc1e31c33e"
+          });
+      var data = json.decode(response.body);
+      print(data);
+      getBooks();
+    } catch (e) {
+      print("e favoriteButton");
+      print(e);
     }
   }
 

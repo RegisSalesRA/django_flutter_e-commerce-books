@@ -1,5 +1,7 @@
 import 'package:client/screens/book_detail.dart';
+import 'package:client/state/book_state.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class SingleBook extends StatelessWidget {
   final int id;
@@ -29,7 +31,9 @@ class SingleBook extends StatelessWidget {
         backgroundColor: Colors.black54,
         title: Text(title),
         leading: IconButton(
-          onPressed: () {},
+          onPressed: () {
+            Provider.of<BookState>(context, listen: false).favoriteButton(id);
+          },
           icon: Icon(
             favorite ? Icons.favorite : Icons.favorite_border,
             color: Colors.red,
