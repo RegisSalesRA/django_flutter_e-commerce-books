@@ -50,3 +50,11 @@ class FavoriteView(APIView):
         except:
             response_msg = {'error': True}
         return Response(response_msg)
+
+class RegisterView(APIView):
+    def post(self,request):
+        serializers = Userserializer(data=request.data)
+        if serializers.is_valid():
+            serializers.save()
+            return Response({'error':False})
+        return Response({'error':True})    
