@@ -1,4 +1,5 @@
 import 'package:client/state/book_state.dart';
+import 'package:client/state/cart_state.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -9,6 +10,8 @@ class BookDetails extends StatelessWidget {
   Widget build(BuildContext context) {
     final id = ModalRoute.of(context).settings.arguments;
     final book = Provider.of<BookState>(context).singleBook(id);
+    final cart = Provider.of<CartState>(context).getCartDatas();
+
     return Scaffold(
       appBar: AppBar(title: Text("Book Details")),
       body: Padding(
@@ -32,13 +35,17 @@ class BookDetails extends StatelessWidget {
                 ),
                 RaisedButton.icon(
                   color: Colors.green,
-                  onPressed: () {},
+                  onPressed: () {
+                    print(Text("funcionando"));
+                    // Provider.of<CartState>(context, listen: false)
+                    //       .addtoCart(id);
+                  },
                   icon: Icon(
                     Icons.shopping_cart,
                     color: Colors.white,
                   ),
                   label: Text(
-                    "Add to card",
+                    "Add to cart",
                     style: TextStyle(
                       color: Colors.white,
                     ),

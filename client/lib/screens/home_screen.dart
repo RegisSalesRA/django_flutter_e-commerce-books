@@ -1,4 +1,6 @@
+import 'package:client/screens/cart_screen.dart';
 import 'package:client/state/book_state.dart';
+import 'package:client/state/cart_state.dart';
 import 'package:client/widgets/add_drower.dart';
 import 'package:client/widgets/singleBook.dart';
 import 'package:flutter/material.dart';
@@ -17,6 +19,9 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void didChangeDependencies() async {
     if (_init) {
+      Provider.of<CartState>(context).getCartDatas();
+      Provider.of<CartState>(context).getoldOrders();
+
       _isLoading = await Provider.of<BookState>(context).getBooks();
       setState(() {});
     }
@@ -40,6 +45,14 @@ class _HomeScreenState extends State<HomeScreen> {
       return Scaffold(
         drawer: AppDrown(),
         appBar: AppBar(
+          actions: [
+            IconButton(
+              onPressed: () {
+                Navigator.of(context).pushNamed(CartScreen.routeName);
+              },
+              icon: Icon(Icons.shopping_cart),
+            )
+          ],
           title: Text("Welcome Book"),
         ),
         body: GridView.builder(
