@@ -23,22 +23,3 @@ class Userserializer(serializers.ModelSerializer):
         user = User.objects.create_user(**validated_data)
         Token.objects.create(user=user)
         return user
-
-class CartSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Cart
-        fields = "__all__" 
-        
-
-class CartBookSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = CartBook
-        fields = "__all__" 
-        depth = 1
-
-
-class OrdersSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Order
-        fields = "__all__" 
-        depth = 1        

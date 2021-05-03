@@ -1,5 +1,5 @@
+import 'package:client/api/user_api.dart';
 import 'package:client/screens/login_screen.dart';
-import 'package:client/state/user_state.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -35,6 +35,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
             return AlertDialog(
               title: Text("Algo errado"),
               actions: [
+                // ignore: deprecated_member_use
                 RaisedButton(
                   onPressed: () {
                     Navigator.of(context).pop();
@@ -51,90 +52,136 @@ class _RegisterScreenState extends State<RegisterScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Register your Account"),
+        centerTitle: true,
+        title: Text("Register your account"),
       ),
       body: Padding(
-        padding: EdgeInsets.all(12),
+        padding: EdgeInsets.all(20),
         child: SingleChildScrollView(
           child: Form(
-            key: _form,
-            child: Column(
-              children: [
-                TextFormField(
-                  validator: (v) {
-                    if (v.isEmpty) {
-                      return "Enter your username";
-                    }
-                    return null;
-                  },
-                  decoration: InputDecoration(
-                    hintText: "Username",
-                  ),
-                  onSaved: (v) {
-                    _username = v;
-                  },
-                ),
-                TextFormField(
-                  validator: (v) {
-                    if (v.isEmpty) {
-                      return "Enter your password";
-                    }
-                    return null;
-                  },
-                  decoration: InputDecoration(
-                    hintText: "Password",
-                  ),
-                  onChanged: (v) {
-                    setState(() {
-                      _confpassword = v;
-                    });
-                  },
-                  onSaved: (v) {
-                    _password = v;
-                  },
-                  obscureText: true,
-                ),
-                TextFormField(
-                  validator: (v) {
-                    if (_confpassword != v) {
-                      return "Confirm dont match";
-                    }
-                    if (v.isEmpty) {
-                      return "Confirm your password";
-                    }
-                    return null;
-                  },
-                  decoration: InputDecoration(
-                    hintText: "Confirme Password",
-                  ),
-                  onSaved: (v) {
-                    _password = v;
-                  },
-                  obscureText: true,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              key: _form,
+              child: Container(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
-                    RaisedButton(
-                      onPressed: () {
-                        _registerNow();
-                      },
-                      child: Text("Register"),
-                    ),
-                    FlatButton(
-                      onPressed: () {
-                        Navigator.of(context)
-                            .pushReplacementNamed(LoginScreen.routeName);
-                      },
-                      child: Text(
-                        "Login New",
+                    Padding(
+                      padding: EdgeInsets.all(20),
+                      child: Icon(
+                        Icons.app_registration,
+                        color: Colors.blueAccent,
+                        size: 150,
                       ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.all(10),
+                      child: TextFormField(
+                        validator: (v) {
+                          if (v.isEmpty) {
+                            return "Enter your username";
+                          }
+                          return null;
+                        },
+                        decoration: InputDecoration(
+                            contentPadding: EdgeInsets.fromLTRB(32, 16, 32, 16),
+                            hintText: "Username",
+                            filled: true,
+                            fillColor: Colors.white,
+                            border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(32))),
+                        onSaved: (v) {
+                          _username = v;
+                        },
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.all(10),
+                      child: TextFormField(
+                        validator: (v) {
+                          if (v.isEmpty) {
+                            return "Enter your password";
+                          }
+                          return null;
+                        },
+                        decoration: InputDecoration(
+                            contentPadding: EdgeInsets.fromLTRB(32, 16, 32, 16),
+                            hintText: "Password",
+                            filled: true,
+                            fillColor: Colors.white,
+                            border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(32))),
+                        onChanged: (v) {
+                          setState(() {
+                            _confpassword = v;
+                          });
+                        },
+                        onSaved: (v) {
+                          _password = v;
+                        },
+                        obscureText: true,
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.all(10),
+                      child: TextFormField(
+                        validator: (v) {
+                          if (_confpassword != v) {
+                            return "Confirm dont match";
+                          }
+                          if (v.isEmpty) {
+                            return "Confirm your password";
+                          }
+                          return null;
+                        },
+                        decoration: InputDecoration(
+                            contentPadding: EdgeInsets.fromLTRB(32, 16, 32, 16),
+                            hintText: "Confirm Password",
+                            filled: true,
+                            fillColor: Colors.white,
+                            border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(32))),
+                        onSaved: (v) {
+                          _password = v;
+                        },
+                        obscureText: true,
+                      ),
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        // ignore: deprecated_member_use
+                        RaisedButton(
+                          onPressed: () {
+                            _registerNow();
+                          },
+                          child: Text(
+                            "Register",
+                            style: TextStyle(color: Colors.white, fontSize: 20),
+                          ),
+                          color: Colors.blue,
+                          padding: EdgeInsets.fromLTRB(32, 16, 32, 16),
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(32)),
+                        ),
+                        // ignore: deprecated_member_use
+                        FlatButton(
+                          onPressed: () {
+                            Navigator.of(context)
+                                .pushReplacementNamed(LoginScreen.routeName);
+                          },
+                          child: Text(
+                            "Login New",
+                            style: TextStyle(color: Colors.white, fontSize: 20),
+                          ),
+                          color: Colors.blue,
+                          padding: EdgeInsets.fromLTRB(32, 16, 32, 16),
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(32)),
+                        ),
+                      ],
                     )
                   ],
-                )
-              ],
-            ),
-          ),
+                ),
+              )),
         ),
       ),
     );

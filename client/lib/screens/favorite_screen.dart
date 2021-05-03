@@ -1,6 +1,6 @@
-import 'package:client/state/book_state.dart';
-import 'package:client/widgets/add_drower.dart';
-import 'package:client/widgets/singleBook.dart';
+import 'package:client/api/book_api.dart';
+import 'package:client/widgets/drower.dart';
+import 'package:client/widgets/single_book.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -11,6 +11,7 @@ class FavoriteScreen extends StatelessWidget {
     final favorite = Provider.of<BookState>(context).favorite;
     return Scaffold(
       appBar: AppBar(
+        centerTitle: true,
         title: Text('Favorites'),
       ),
       drawer: AppDrown(),
