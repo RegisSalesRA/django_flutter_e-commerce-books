@@ -35,7 +35,7 @@ class BookState with ChangeNotifier {
   }
 
   Future<void> favoriteButton(int id) async {
-    String url = 'http://10.0.2.2:8000/api/v1/favorite/';
+    String url = 'http://10.0.2.2:8000/api/v1/favorites/';
     var token = storage.getItem('token');
     try {
       http.Response response = await http.post(url,
