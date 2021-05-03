@@ -4,7 +4,7 @@ from rest_framework.authtoken.views import obtain_auth_token
 
 urlpatterns = [
     path('books/',BookView.as_view()),
-    path('favorite/',FavoriteView.as_view()),
-    path('login/', obtain_auth_token),
-    path('register/', RegisterView.as_view()),
+    path('favorites/',FavoriteView.as_view()),
+    path('logins/', obtain_auth_token),
+    path('registers/', RegisterView.as_view()),
 ]
