@@ -6,8 +6,12 @@ import 'package:client/screens/register_screen.dart';
 import 'package:localstorage/localstorage.dart';
 import 'package:provider/provider.dart';
 import 'api/book_api.dart';
+import 'api/cart_api.dart';
 import 'api/user_api.dart';
 import 'screens/book_detail.dart';
+import 'screens/cart_screen.dart';
+import 'screens/order_history.dart';
+import 'screens/order_screen.dart';
 
 void main() {
   runApp(MyApp());
@@ -21,6 +25,7 @@ class MyApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(create: (ctx) => BookState()),
         ChangeNotifierProvider(create: (ctx) => UserState()),
+        ChangeNotifierProvider(create: (ctx) => CartState()),
       ],
       child: MaterialApp(
           debugShowCheckedModeBanner: false,
@@ -46,6 +51,9 @@ class MyApp extends StatelessWidget {
             FavoriteScreen.routeName: (ctx) => FavoriteScreen(),
             LoginScreen.routeName: (ctx) => LoginScreen(),
             RegisterScreen.routeName: (ctx) => RegisterScreen(),
+            CartScreens.routeName: (ctx) => CartScreens(),
+            OrderScreens.routeName: (ctx) => OrderScreens(),
+            OrderNew.routeName: (ctx) => OrderNew(),
           }),
     );
   }

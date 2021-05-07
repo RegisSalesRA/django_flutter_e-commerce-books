@@ -1,4 +1,5 @@
 import 'package:client/api/book_api.dart';
+import 'package:client/api/cart_api.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -35,9 +36,8 @@ class BookDetails extends StatelessWidget {
                 RaisedButton.icon(
                   color: Colors.green,
                   onPressed: () {
-                    print(Text("funcionando"));
-                    // Provider.of<CartState>(context, listen: false)
-                    //       .addtoCart(id);
+                    Provider.of<CartState>(context, listen: false)
+                        .addtoCart(id);
                   },
                   icon: Icon(
                     Icons.shopping_cart,

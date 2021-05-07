@@ -1,4 +1,6 @@
 import 'package:client/api/book_api.dart';
+import 'package:client/api/cart_api.dart';
+import 'package:client/screens/cart_screen.dart';
 import 'package:client/widgets/drower.dart';
 import 'package:client/widgets/single_book.dart';
 import 'package:flutter/material.dart';
@@ -17,6 +19,8 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void didChangeDependencies() async {
     if (_init) {
+      Provider.of<CartState>(context).getCartDatas();
+      Provider.of<CartState>(context).getoldOrders();
       _isLoading = await Provider.of<BookState>(context).getBooks();
       setState(() {});
     }
@@ -26,6 +30,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final cart = Provider.of<CartState>(context).cartModel;
     final book = Provider.of<BookState>(context).book;
     if (!_isLoading)
       return Scaffold(
@@ -43,6 +48,23 @@ class _HomeScreenState extends State<HomeScreen> {
         appBar: AppBar(
           centerTitle: true,
           title: Text("Welcome Book"),
+          actions: [
+            FlatButton.icon(
+              onPressed: () {
+                Navigator.of(context).pushNamed(CartScreens.routeName);
+              },
+              icon: Icon(
+                Icons.shopping_cart,
+                color: Colors.white,
+              ),
+              label: Text(
+                cart != null ? "${cart.cartbooks.length}" : '',
+                style: TextStyle(
+                  color: Colors.white,
+                ),
+              ),
+            ),
+          ],
         ),
         body: GridView.builder(
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(

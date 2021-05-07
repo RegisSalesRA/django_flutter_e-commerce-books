@@ -1,3 +1,4 @@
+import 'package:client/screens/order_history.dart';
 import 'package:flutter/material.dart';
 import 'package:client/screens/favorite_screen.dart';
 import 'package:client/screens/home_screen.dart';
@@ -54,6 +55,17 @@ class _AppDrownState extends State<AppDrown> {
               "Favorite",
               style: TextStyle(fontSize: 18, color: Colors.blue),
             ),
+          ),
+          ListTile(
+            onTap: () {
+              Navigator.of(context)
+                  .pushReplacementNamed(OrderScreens.routeName);
+            },
+            trailing: Icon(
+              Icons.history,
+              color: Colors.blue,
+            ),
+            title: Text("Old Orders"),
           ),
           Spacer(),
           ListTile(
