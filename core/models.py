@@ -55,3 +55,29 @@ class Favorite(models.Model):
 
 
 
+class Cart(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    total = models.PositiveIntegerField()
+    isComplit = models.BooleanField(default=False)
+    date = models.DateField(auto_now_add=True)
+
+    def __str__(self):
+        return f"User={self.user.username}|ISComplit={self.isComplit}"
+
+
+class CartBook(models.Model):
+    cart = models.ForeignKey(Cart, on_delete=models.CASCADE)
+    book = models.ManyToManyField(Book)
+    price = models.PositiveIntegerField()
+    quantity = models.PositiveIntegerField()
+    subtotal = models.PositiveIntegerField()
+
+    def __str__(self):
+        return f"Cart=={self.cart.id}<==>Cartbook:{self.id}==Qualtity=={self.quantity}"
+
+
+class Order(models.Model):
+    cart = models.OneToOneField(Cart, on_delete=models.CASCADE)
+    email = models.CharField(max_length=150)
+    phone = models.CharField(max_length=13)
+    address = models.CharField(max_length=200)
