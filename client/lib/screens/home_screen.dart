@@ -44,43 +44,45 @@ class _HomeScreenState extends State<HomeScreen> {
       );
     else
       return Scaffold(
-        drawer: AppDrown(),
-        appBar: AppBar(
-          centerTitle: true,
-          title: Text("Welcome Book"),
-          actions: [
-            FlatButton.icon(
-              onPressed: () {
-                Navigator.of(context).pushNamed(CartScreens.routeName);
-              },
-              icon: Icon(
-                Icons.shopping_cart,
-                color: Colors.white,
-              ),
-              label: Text(
-                cart != null ? "${cart.cartbooks.length}" : '',
-                style: TextStyle(
+          drawer: AppDrown(),
+          appBar: AppBar(
+            centerTitle: true,
+            title: Text("Welcome Book"),
+            actions: [
+              FlatButton.icon(
+                onPressed: () {
+                  Navigator.of(context).pushNamed(CartScreens.routeName);
+                },
+                icon: Icon(
+                  Icons.shopping_cart,
                   color: Colors.white,
                 ),
+                label: Text(
+                  cart != null ? "${cart.cartbooks.length}" : '',
+                  style: TextStyle(
+                    color: Colors.white,
+                  ),
+                ),
+              ),
+            ],
+          ),
+          body: Padding(
+            padding: EdgeInsets.only(top: 5),
+            child: GridView.builder(
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                childAspectRatio: 3 / 3,
+                crossAxisCount: 2,
+                crossAxisSpacing: 10,
+                mainAxisSpacing: 10,
+              ),
+              itemCount: book.length,
+              itemBuilder: (ctx, i) => SingleBook(
+                id: book[i].id,
+                title: book[i].title,
+                image: book[i].image,
+                favorite: book[i].favorite,
               ),
             ),
-          ],
-        ),
-        body: GridView.builder(
-          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            childAspectRatio: 3 / 3,
-            crossAxisCount: 2,
-            crossAxisSpacing: 10,
-            mainAxisSpacing: 10,
-          ),
-          itemCount: book.length,
-          itemBuilder: (ctx, i) => SingleBook(
-            id: book[i].id,
-            title: book[i].title,
-            image: book[i].image,
-            favorite: book[i].favorite,
-          ),
-        ),
-      );
+          ));
   }
 }
