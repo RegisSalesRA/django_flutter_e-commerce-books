@@ -28,7 +28,8 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (ctx) => CartState()),
       ],
       child: MaterialApp(
-          theme: ThemeData(primaryColor: Color(0xFFFF6D00)),
+          theme: ThemeData(
+              primaryColor: Color(0xFFFF6D00), accentColor: Color(0xFFFF6D00)),
           debugShowCheckedModeBanner: false,
           home: FutureBuilder(
             future: storage.ready,

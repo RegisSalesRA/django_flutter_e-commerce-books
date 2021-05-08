@@ -21,6 +21,8 @@ class _AppDrownState extends State<AppDrown> {
   @override
   Widget build(BuildContext context) {
     return Drawer(
+        child: Container(
+      color: Color(0xFFF5F5F5),
       child: Column(
         children: [
           AppBar(
@@ -34,11 +36,11 @@ class _AppDrownState extends State<AppDrown> {
             trailing: Icon(
               Icons.home,
               size: 30,
-              color: Colors.blue,
+              color: Colors.orange,
             ),
             title: Text(
               "Home",
-              style: TextStyle(fontSize: 18, color: Colors.blue),
+              style: TextStyle(fontSize: 18, color: Colors.orange),
             ),
           ),
           ListTile(
@@ -53,7 +55,7 @@ class _AppDrownState extends State<AppDrown> {
             ),
             title: Text(
               "Favorite",
-              style: TextStyle(fontSize: 18, color: Colors.blue),
+              style: TextStyle(fontSize: 18, color: Colors.orange),
             ),
           ),
           ListTile(
@@ -63,9 +65,12 @@ class _AppDrownState extends State<AppDrown> {
             },
             trailing: Icon(
               Icons.history,
-              color: Colors.blue,
+              color: Colors.greenAccent,
             ),
-            title: Text("Old Orders"),
+            title: Text(
+              "Old Orders",
+              style: TextStyle(fontSize: 18, color: Colors.orange),
+            ),
           ),
           Spacer(),
           ListTile(
@@ -83,7 +88,7 @@ class _AppDrownState extends State<AppDrown> {
           ),
         ],
       ),
-    );
+    ));
   }
 }
 //OrderScreens

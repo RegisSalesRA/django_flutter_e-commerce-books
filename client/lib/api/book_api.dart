@@ -55,7 +55,7 @@ class BookState with ChangeNotifier {
     }
   }
 
-  List<Book> get book {
+  List<Book> get books {
     return [..._books];
   }
 

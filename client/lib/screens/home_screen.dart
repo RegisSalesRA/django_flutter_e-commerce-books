@@ -31,7 +31,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     final cart = Provider.of<CartState>(context).cartModel;
-    final book = Provider.of<BookState>(context).book;
+    final book = Provider.of<BookState>(context).books;
     if (!_isLoading)
       return Scaffold(
         appBar: AppBar(

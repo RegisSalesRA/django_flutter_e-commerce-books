@@ -14,32 +14,39 @@ class SingleBook extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GridTile(
-      child: GestureDetector(
-        onTap: () {
-          Navigator.of(context).pushNamed(
-            BookDetails.routeName,
-            arguments: id,
-          );
-        },
-        child: Image.network(
-          "http://10.0.2.2:8000$image",
-          fit: BoxFit.cover,
-        ),
-      ),
-      footer: GridTileBar(
-        backgroundColor: Colors.black54,
-        title: Text(title),
-        leading: IconButton(
-          onPressed: () {
-            Provider.of<BookState>(context, listen: false).favoriteButton(id);
-          },
-          icon: Icon(
-            favorite ? Icons.star : Icons.star_border,
-            color: Colors.yellow,
+    return Scaffold(
+      body: GridTile(
+          child: GestureDetector(
+            onTap: () {
+              Navigator.of(context).pushNamed(
+                BookDetails.routeName,
+                arguments: id,
+              );
+            },
+            child: Image.network(
+              "http://10.0.2.2:8000$image",
+              fit: BoxFit.cover,
+            ),
           ),
-        ),
-      ),
+          footer: Container(
+            height: 37,
+            child: GridTileBar(
+              title: Text(title,
+                  style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold)),
+              // style: TextStyle(color: Colors.white, fontSize: 20
+              backgroundColor: Colors.black87,
+              leading: IconButton(
+                onPressed: () {
+                  Provider.of<BookState>(context, listen: false)
+                      .favoriteButton(id);
+                },
+                icon: Icon(
+                  favorite ? Icons.star : Icons.star_border,
+                  color: Colors.yellow,
+                ),
+              ),
+            ),
+          )),
     );
   }
 }
