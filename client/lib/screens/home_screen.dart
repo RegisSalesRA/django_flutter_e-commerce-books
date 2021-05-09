@@ -36,7 +36,6 @@ class _HomeScreenState extends State<HomeScreen> {
       return Scaffold(
         appBar: AppBar(
           centerTitle: true,
-          title: Text("Welcome Book"),
         ),
         body: Center(
           child: Text("No data yet"),
@@ -47,7 +46,7 @@ class _HomeScreenState extends State<HomeScreen> {
           drawer: AppDrown(),
           appBar: AppBar(
             centerTitle: true,
-            title: Text("Welcome Book"),
+            title: Text("Wellcome to Books"),
             actions: [
               FlatButton.icon(
                 onPressed: () {
