@@ -1,6 +1,7 @@
 import 'package:client/api/book_api.dart';
 import 'package:client/api/cart_api.dart';
 import 'package:client/screens/cart_screen.dart';
+import 'package:client/screens/search_field.dart';
 import 'package:client/widgets/drower.dart';
 import 'package:client/widgets/single_book.dart';
 import 'package:flutter/material.dart';
@@ -48,6 +49,13 @@ class _HomeScreenState extends State<HomeScreen> {
             centerTitle: true,
             title: Text("Wellcome to Books"),
             actions: [
+              IconButton(
+                icon: Icon(Icons.search),
+                onPressed: () {
+                  Navigator.of(context)
+                      .push(MaterialPageRoute(builder: (ctx) => CitySearch()));
+                },
+              ),
               FlatButton.icon(
                 onPressed: () {
                   Navigator.of(context).pushNamed(CartScreens.routeName);
