@@ -53,7 +53,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 icon: Icon(Icons.search),
                 onPressed: () {
                   Navigator.of(context)
-                      .push(MaterialPageRoute(builder: (ctx) => CitySearch()));
+                      .push(MaterialPageRoute(builder: (ctx) => SearchBook()));
                 },
               ),
               FlatButton.icon(

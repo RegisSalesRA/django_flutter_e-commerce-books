@@ -1,12 +1,17 @@
 from core.api.v1.serializers.serializers import *
 from core.models import *
 from rest_framework.views import APIView
+from rest_framework import generics, filters, status
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.authentication import TokenAuthentication
 
-class BookView(APIView):
 
+class BookView(APIView):
+    search_fields = ['title']
+    filter_backends = (filters.SearchFilter,)
+    queryset = Book.objects.all()
+    serializer_class = BookSerializer
     permission_classes = [IsAuthenticated]
     authentication_classes = [TokenAuthentication,]
 
@@ -23,6 +28,15 @@ class BookView(APIView):
                 book['Favorite'] = False
             data.append(book)
         return Response(serializers.data)
+
+
+class BookFilter(generics.ListCreateAPIView):
+ #   permission_classes = [IsAuthenticated]
+  #  authentication_classes = [TokenAuthentication,]    
+    search_fields = ['title']
+    filter_backends = (filters.SearchFilter,)
+    queryset = Book.objects.all()
+    serializer_class = BookSerializer
 
 
 class FavoriteView(APIView):
