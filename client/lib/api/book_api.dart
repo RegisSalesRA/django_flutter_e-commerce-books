@@ -31,7 +31,7 @@ class BookState with ChangeNotifier {
         'Authorization': "token $token"
       });
       var data = json.decode(response.body) as List;
-      print(data);
+      //  print(data);
       List<Book> temp = [];
       data.forEach((element) {
         Book book = Book.fromJson(element);
@@ -63,7 +63,7 @@ class BookState with ChangeNotifier {
       getBooks();
     } catch (e) {
       print("e favoriteButton");
-      print(e);
+      // print(e);
     }
   }
 

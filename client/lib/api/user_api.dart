@@ -7,17 +7,19 @@ import 'package:localstorage/localstorage.dart';
 class UserState with ChangeNotifier {
   LocalStorage storage = new LocalStorage('usertoken');
 
-  Future<bool> loginNow(String uname, String passw) async {
+  Future<bool> loginNow(String usuario, String password) async {
     String url = '$baseUrl:8000/api/v1/logins/';
+
     try {
       http.Response response = await http.post(url,
           headers: {
             "Content-Type": "application/json",
           },
           body: json.encode({
-            "username": uname,
-            "password": passw,
+            "username": usuario,
+            "password": password,
           }));
+
       var data = json.decode(response.body) as Map;
       if (data.containsKey("token")) {
         storage.setItem("token", data['token']);
@@ -32,7 +34,7 @@ class UserState with ChangeNotifier {
     }
   }
 
-  Future<bool> registerNow(String uname, String passw) async {
+  Future<bool> registerNow(String usuario, String password) async {
     String url = '$baseUrl:8000/api/v1/registers/';
     try {
       http.Response response = await http.post(url,
@@ -40,10 +42,11 @@ class UserState with ChangeNotifier {
             "Content-Type": "application/json",
           },
           body: json.encode({
-            "username": uname,
-            "password": passw,
+            "username": usuario,
+            "password": password,
           }));
       var data = json.decode(response.body) as Map;
+
       if (data["error"] == false) {
         return true;
       }
