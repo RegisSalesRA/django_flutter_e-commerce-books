@@ -1,6 +1,7 @@
 import 'package:client/api/book_api.dart';
 import 'package:client/api/cart_api.dart';
 import 'package:client/screens/cart_screen.dart';
+import 'package:client/service/api_adress.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -39,7 +40,7 @@ class BookDetails extends StatelessWidget {
         child: ListView(
           children: [
             Image.network(
-              "http://10.0.2.2:8000${book.image}",
+              "$baseUrl:8000${book.image}",
               fit: BoxFit.cover,
               height: 300,
             ),

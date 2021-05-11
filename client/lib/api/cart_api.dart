@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:client/models/cart_model.dart';
 import 'package:client/models/order_model.dart';
+import 'package:client/service/api_adress.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:localstorage/localstorage.dart';
 import 'package:http/http.dart' as http;
@@ -12,7 +13,7 @@ class CartState with ChangeNotifier {
   List<OrderModel> _orderder;
 
   Future<void> getCartDatas() async {
-    String url = 'http://10.0.2.2:8000/api/v1/cart/';
+    String url = '$baseUrl:8000/api/v1/cart/';
     var token = storage.getItem('token');
     try {
       http.Response response = await http.get(url, headers: {
@@ -37,7 +38,7 @@ class CartState with ChangeNotifier {
   }
 
   Future<void> getoldOrders() async {
-    String url = 'http://10.0.2.2:8000/api/v1/order/';
+    String url = '$baseUrl:8000/api/v1/order/';
     var token = storage.getItem('token');
     try {
       http.Response response = await http.get(url, headers: {
@@ -62,7 +63,7 @@ class CartState with ChangeNotifier {
   }
 
   Future<void> addtoCart(int id) async {
-    String url = 'http://10.0.2.2:8000/api/v1/addtocart/';
+    String url = '$baseUrl:8000/api/v1/addtocart/';
     var token = storage.getItem('token');
     try {
       http.Response response = await http.post(url,
@@ -84,7 +85,7 @@ class CartState with ChangeNotifier {
   }
 
   Future<void> deletecartbook(int id) async {
-    String url = 'http://10.0.2.2:8000/api/v1/delatecartbooks/';
+    String url = '$baseUrl:8000/api/v1/delatecartbooks/';
     var token = storage.getItem('token');
     try {
       http.Response response = await http.post(url,
@@ -106,7 +107,7 @@ class CartState with ChangeNotifier {
   }
 
   Future<bool> deletecart(int id) async {
-    String url = 'http://10.0.2.2:8000/api/v1/deletecart/';
+    String url = '$baseUrl:8000/api/v1/deletecart/';
     var token = storage.getItem('token');
     try {
       http.Response response = await http.post(url,
@@ -135,7 +136,7 @@ class CartState with ChangeNotifier {
 
   Future<bool> ordercart(
       int cartid, String address, String email, String phone) async {
-    String url = 'http://10.0.2.2:8000/api/v1/ordernow/';
+    String url = '$baseUrl:8000/api/v1/ordernow/';
     var token = storage.getItem('token');
     try {
       http.Response response = await http.post(url,

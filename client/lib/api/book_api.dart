@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:client/models/book_model.dart';
+import 'package:client/service/api_adress.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:localstorage/localstorage.dart';
@@ -8,7 +9,7 @@ import 'package:localstorage/localstorage.dart';
 class SearchBooks {
   LocalStorage storage = new LocalStorage('usertoken');
   static Future<String> searchBook(String query) async {
-    String url = 'http://10.0.2.2:8000/api/v1/books-filter/?search=$query';
+    String url = '$baseUrl:8000/api/v1/books-filter/?search=$query';
 
     http.Response response = await http.get(url);
 
@@ -22,7 +23,7 @@ class BookState with ChangeNotifier {
   List<Book> _books = [];
 
   Future<bool> getBooks() async {
-    String url = 'http://10.0.2.2:8000/api/v1/books/';
+    String url = '$baseUrl:8000/api/v1/books/';
     var token = storage.getItem('token');
     try {
       http.Response response = await http.get(url, headers: {
@@ -46,7 +47,7 @@ class BookState with ChangeNotifier {
   }
 
   Future<void> favoriteButton(int id) async {
-    String url = 'http://10.0.2.2:8000/api/v1/favorites/';
+    String url = '$baseUrl:8000/api/v1/favorites/';
     var token = storage.getItem('token');
     try {
       http.Response response = await http.post(url,

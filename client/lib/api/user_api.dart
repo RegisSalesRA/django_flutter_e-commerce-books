@@ -1,5 +1,5 @@
 import 'dart:convert';
-
+import 'package:client/service/api_adress.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:localstorage/localstorage.dart';
@@ -8,7 +8,7 @@ class UserState with ChangeNotifier {
   LocalStorage storage = new LocalStorage('usertoken');
 
   Future<bool> loginNow(String uname, String passw) async {
-    String url = 'http://10.0.2.2:8000/api/v1/logins/';
+    String url = '$baseUrl:8000/api/v1/logins/';
     try {
       http.Response response = await http.post(url,
           headers: {
@@ -33,7 +33,7 @@ class UserState with ChangeNotifier {
   }
 
   Future<bool> registerNow(String uname, String passw) async {
-    String url = 'http://10.0.2.2:8000/api/v1/registers/';
+    String url = '$baseUrl:8000/api/v1/registers/';
     try {
       http.Response response = await http.post(url,
           headers: {

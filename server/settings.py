@@ -30,6 +30,7 @@ DEBUG = str(os.getenv('DEBUG'))
 ALLOWED_HOSTS = [
     '10.0.2.2',
     '127.0.0.1',
+    '192.168.15.57',
 ]
 
 

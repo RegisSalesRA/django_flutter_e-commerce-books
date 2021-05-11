@@ -34,7 +34,6 @@ class _LoginScreenState extends State<LoginScreen> {
             return AlertDialog(
               title: Text("Algo errado"),
               actions: [
-                // ignore: deprecated_member_use
                 RaisedButton(
                   onPressed: () {
                     Navigator.of(context).pop();

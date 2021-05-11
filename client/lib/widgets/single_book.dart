@@ -1,5 +1,6 @@
 import 'package:client/api/book_api.dart';
 import 'package:client/screens/book_detail.dart';
+import 'package:client/service/api_adress.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -24,7 +25,7 @@ class SingleBook extends StatelessWidget {
               );
             },
             child: Image.network(
-              "http://10.0.2.2:8000$image",
+              "$baseUrl:8000$image",
               fit: BoxFit.cover,
             ),
           ),
@@ -33,7 +34,6 @@ class SingleBook extends StatelessWidget {
             child: GridTileBar(
               title: Text(title,
                   style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold)),
-              // style: TextStyle(color: Colors.white, fontSize: 20
               backgroundColor: Colors.black87,
               leading: IconButton(
                 onPressed: () {
