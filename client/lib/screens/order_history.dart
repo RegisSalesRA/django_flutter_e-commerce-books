@@ -1,5 +1,5 @@
 import 'package:client/api/cart_api.dart';
-import 'package:client/widgets/drower.dart';
+import 'package:client/widgets/drawer.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -12,7 +12,7 @@ class OrderScreens extends StatelessWidget {
       appBar: AppBar(
         title: Text("Old Orders"),
       ),
-      drawer: AppDrown(),
+      drawer: AppDrawer(),
       body: Padding(
         padding: EdgeInsets.all(12),
         child: ListView.builder(

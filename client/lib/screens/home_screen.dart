@@ -2,7 +2,7 @@ import 'package:client/api/book_api.dart';
 import 'package:client/api/cart_api.dart';
 import 'package:client/screens/cart_screen.dart';
 import 'package:client/screens/search_field.dart';
-import 'package:client/widgets/drower.dart';
+import 'package:client/widgets/drawer.dart';
 import 'package:client/widgets/single_book.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -52,7 +52,7 @@ class _HomeScreenState extends State<HomeScreen> {
           child: Scaffold(
             backgroundColor: Colors.transparent,
             extendBodyBehindAppBar: true,
-            drawer: AppDrown(),
+            drawer: AppDrawer(),
             appBar: AppBar(
               backgroundColor: Colors.transparent,
               centerTitle: true,

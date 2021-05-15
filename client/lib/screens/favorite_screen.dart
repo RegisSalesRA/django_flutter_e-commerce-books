@@ -1,5 +1,5 @@
 import 'package:client/api/book_api.dart';
-import 'package:client/widgets/drower.dart';
+import 'package:client/widgets/drawer.dart';
 import 'package:client/widgets/single_book.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -14,7 +14,7 @@ class FavoriteScreen extends StatelessWidget {
         centerTitle: true,
         title: Text('Favorites'),
       ),
-      drawer: AppDrown(),
+      drawer: AppDrawer(),
       body: GridView.builder(
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
           childAspectRatio: 3 / 3,
