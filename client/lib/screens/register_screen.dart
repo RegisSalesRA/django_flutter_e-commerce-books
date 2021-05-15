@@ -51,139 +51,162 @@ class _RegisterScreenState extends State<RegisterScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        title: Text("Register your account"),
-      ),
-      body: Padding(
-        padding: EdgeInsets.all(20),
-        child: SingleChildScrollView(
-          child: Form(
-              key: _form,
-              child: Container(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
-                    Padding(
-                      padding: EdgeInsets.all(20),
-                      child: Icon(
-                        Icons.app_registration,
-                        color: Colors.blueAccent,
-                        size: 150,
-                      ),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.all(10),
-                      child: TextFormField(
-                        validator: (v) {
-                          if (v.isEmpty) {
-                            return "Enter your username";
-                          }
-                          return null;
-                        },
-                        decoration: InputDecoration(
-                            contentPadding: EdgeInsets.fromLTRB(32, 16, 32, 16),
-                            hintText: "Username",
-                            filled: true,
-                            fillColor: Colors.white,
-                            border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(32))),
-                        onSaved: (v) {
-                          _username = v;
-                        },
-                      ),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.all(10),
-                      child: TextFormField(
-                        validator: (v) {
-                          if (v.isEmpty) {
-                            return "Enter your password";
-                          }
-                          return null;
-                        },
-                        decoration: InputDecoration(
-                            contentPadding: EdgeInsets.fromLTRB(32, 16, 32, 16),
-                            hintText: "Password",
-                            filled: true,
-                            fillColor: Colors.white,
-                            border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(32))),
-                        onChanged: (v) {
-                          setState(() {
-                            _confpassword = v;
-                          });
-                        },
-                        onSaved: (v) {
-                          _password = v;
-                        },
-                        obscureText: true,
-                      ),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.all(10),
-                      child: TextFormField(
-                        validator: (v) {
-                          if (_confpassword != v) {
-                            return "Confirm dont match";
-                          }
-                          if (v.isEmpty) {
-                            return "Confirm your password";
-                          }
-                          return null;
-                        },
-                        decoration: InputDecoration(
-                            contentPadding: EdgeInsets.fromLTRB(32, 16, 32, 16),
-                            hintText: "Confirm Password",
-                            filled: true,
-                            fillColor: Colors.white,
-                            border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(32))),
-                        onSaved: (v) {
-                          _password = v;
-                        },
-                        obscureText: true,
-                      ),
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        // ignore: deprecated_member_use
-                        RaisedButton(
-                          onPressed: () {
-                            _registerNow();
-                          },
-                          child: Text(
-                            "Register",
-                            style: TextStyle(color: Colors.white, fontSize: 20),
+      floatingActionButton: FloatingActionButton(
+          child: Icon(
+            Icons.arrow_back,
+            size: 30,
+          ),
+          onPressed: () {
+            Navigator.of(context).pushReplacementNamed(LoginScreen.routeName);
+          }),
+      body: Container(
+          decoration: BoxDecoration(
+              image: DecorationImage(
+                  image: AssetImage("assets/livrologin.webp"),
+                  fit: BoxFit.cover)),
+          child: Stack(
+            alignment: Alignment.center,
+            children: [
+              Container(),
+              SingleChildScrollView(
+                child: Form(
+                    key: _form,
+                    child: Container(
+                      child: Column(
+                        children: [
+                          Padding(
+                            padding: EdgeInsets.all(10),
+                            child: TextFormField(
+                              style: TextStyle(color: Colors.white),
+                              validator: (v) {
+                                if (v.isEmpty) {
+                                  return "Enter your username";
+                                }
+                                return null;
+                              },
+                              decoration: InputDecoration(
+                                  icon: Icon(
+                                    Icons.account_circle,
+                                    color: Colors.white,
+                                  ),
+                                  hintText: "Username",
+                                  hintStyle: (TextStyle(
+                                      color: Colors.white, fontSize: 20)),
+                                  filled: true,
+                                  border: InputBorder.none),
+                              onSaved: (v) {
+                                _username = v;
+                              },
+                            ),
                           ),
-                          color: Colors.blue,
-                          padding: EdgeInsets.fromLTRB(32, 16, 32, 16),
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(32)),
-                        ),
-                        // ignore: deprecated_member_use
-                        FlatButton(
-                          onPressed: () {
-                            Navigator.of(context)
-                                .pushReplacementNamed(LoginScreen.routeName);
-                          },
-                          child: Text(
-                            "Login New",
-                            style: TextStyle(color: Colors.white, fontSize: 20),
+                          Padding(
+                            padding: EdgeInsets.all(10),
+                            child: TextFormField(
+                              style: TextStyle(color: Colors.white),
+                              validator: (v) {
+                                if (v.isEmpty) {
+                                  return "Enter your password";
+                                }
+                                return null;
+                              },
+                              decoration: InputDecoration(
+                                  icon: Icon(
+                                    Icons.lock_outline,
+                                    color: Colors.white,
+                                  ),
+                                  hintText: "Password",
+                                  hintStyle: (TextStyle(
+                                      color: Colors.white, fontSize: 20)),
+                                  filled: true,
+                                  border: InputBorder.none),
+                              onChanged: (v) {
+                                setState(() {
+                                  _confpassword = v;
+                                });
+                              },
+                              onSaved: (v) {
+                                _password = v;
+                              },
+                              obscureText: true,
+                            ),
                           ),
-                          color: Colors.blue,
-                          padding: EdgeInsets.fromLTRB(32, 16, 32, 16),
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(32)),
-                        ),
-                      ],
-                    )
-                  ],
-                ),
-              )),
-        ),
-      ),
+                          Padding(
+                            padding: EdgeInsets.all(10),
+                            child: TextFormField(
+                              style: TextStyle(color: Colors.white),
+                              validator: (v) {
+                                if (_confpassword != v) {
+                                  return "Confirm dont match";
+                                }
+                                if (v.isEmpty) {
+                                  return "Confirm your password";
+                                }
+                                return null;
+                              },
+                              decoration: InputDecoration(
+                                  icon: Icon(
+                                    Icons.lock_outline,
+                                    color: Colors.white,
+                                  ),
+                                  hintText: "Confirm Password",
+                                  hintStyle: (TextStyle(
+                                      color: Colors.white, fontSize: 20)),
+                                  filled: true,
+                                  border: InputBorder.none),
+                              onSaved: (v) {
+                                _password = v;
+                              },
+                              obscureText: true,
+                            ),
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  Padding(
+                                    padding: EdgeInsets.only(bottom: 20),
+                                    child: Text(""),
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsets.all(12),
+                                    child: InkWell(
+                                      onTap: () {
+                                        _registerNow();
+                                      },
+                                      child: Container(
+                                        width: 200,
+                                        height: 60,
+                                        alignment: Alignment.center,
+                                        decoration: BoxDecoration(
+                                            gradient: LinearGradient(colors: [
+                                              Colors.red,
+                                              Colors.orange
+                                            ]),
+                                            borderRadius: BorderRadius.all(
+                                                Radius.circular(30.0))),
+                                        child: Text(
+                                          "Register",
+                                          style: TextStyle(
+                                            color: Colors.white,
+                                            fontSize: 22,
+                                            fontWeight: FontWeight.w300,
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              )
+                            ],
+                          )
+                        ],
+                      ),
+                    )),
+              )
+            ],
+          )),
     );
   }
 }
