@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:client/screens/favorite_screen.dart';
 import 'package:client/screens/home_screen.dart';
-import 'package:client/screens/login_screen.dart';
-import 'package:client/screens/register_screen.dart';
 import 'package:localstorage/localstorage.dart';
 import 'package:provider/provider.dart';
+import 'account/login_screen.dart';
+import 'account/register_screen.dart';
 import 'api/book_api.dart';
 import 'api/cart_api.dart';
 import 'api/user_api.dart';
@@ -28,8 +28,8 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (ctx) => CartState()),
       ],
       child: MaterialApp(
-          theme: ThemeData(
-              primaryColor: Color(0xFFFF6D00), accentColor: Color(0xFFFF6D00)),
+          //  theme: ThemeData(
+          //    primaryColor: Color(0xFFFF6D00), accentColor: Color(0xFFFF6D00)),
           debugShowCheckedModeBanner: false,
           home: FutureBuilder(
             future: storage.ready,

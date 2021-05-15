@@ -16,6 +16,7 @@ class SingleBook extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.transparent,
       body: GridTile(
           child: GestureDetector(
             onTap: () {
@@ -24,17 +25,24 @@ class SingleBook extends StatelessWidget {
                 arguments: id,
               );
             },
-            child: Image.network(
-              "$baseUrl:8000$image",
-              fit: BoxFit.cover,
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(20),
+              child: Image.network(
+                "$baseUrl:8000$image",
+                fit: BoxFit.cover,
+              ),
             ),
           ),
           footer: Container(
-            height: 37,
+            height: 44,
+            width: 80,
+            decoration: BoxDecoration(
+              color: Colors.black87,
+              borderRadius: BorderRadius.all(Radius.circular(20)),
+            ),
             child: GridTileBar(
               title: Text(title,
                   style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold)),
-              backgroundColor: Colors.black87,
               leading: IconButton(
                 onPressed: () {
                   Provider.of<BookState>(context, listen: false)

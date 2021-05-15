@@ -43,51 +43,120 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
       );
     else
-      return Scaffold(
-          drawer: AppDrown(),
-          appBar: AppBar(
-            centerTitle: true,
-            title: Text("Welcome to Books"),
-            actions: [
-              IconButton(
-                icon: Icon(Icons.search),
-                onPressed: () {
-                  Navigator.of(context)
-                      .push(MaterialPageRoute(builder: (ctx) => SearchBook()));
-                },
-              ),
-              FlatButton.icon(
-                onPressed: () {
-                  Navigator.of(context).pushNamed(CartScreens.routeName);
-                },
-                icon: Icon(
-                  Icons.shopping_cart,
-                  color: Colors.white,
-                ),
-                label: Text(
-                  cart != null ? "${cart.cartbooks.length}" : '',
-                  style: TextStyle(
+      return Container(
+          decoration: BoxDecoration(
+              gradient: LinearGradient(
+                  begin: Alignment.bottomLeft,
+                  end: Alignment.topRight,
+                  colors: [Colors.grey, Colors.orangeAccent])),
+          child: Scaffold(
+            backgroundColor: Colors.transparent,
+            extendBodyBehindAppBar: true,
+            drawer: AppDrown(),
+            appBar: AppBar(
+              backgroundColor: Colors.transparent,
+              centerTitle: true,
+              title: Text("Welcome!!"),
+              actions: [
+                FlatButton.icon(
+                  onPressed: () {
+                    Navigator.of(context).pushNamed(CartScreens.routeName);
+                  },
+                  icon: Icon(
+                    Icons.shopping_cart,
                     color: Colors.white,
                   ),
+                  label: Text(
+                    cart != null ? "${cart.cartbooks.length}" : '',
+                    style: TextStyle(
+                      color: Colors.white,
+                    ),
+                  ),
                 ),
-              ),
-            ],
-          ),
-          body: Padding(
-            padding: EdgeInsets.only(top: 5),
-            child: GridView.builder(
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                childAspectRatio: 3 / 3,
-                crossAxisCount: 2,
-                crossAxisSpacing: 10,
-                mainAxisSpacing: 10,
-              ),
-              itemCount: book.length,
-              itemBuilder: (ctx, i) => SingleBook(
-                id: book[i].id,
-                title: book[i].title,
-                image: book[i].image,
-                favorite: book[i].favorite,
+              ],
+            ),
+            body: SafeArea(
+              child: Container(
+                padding: EdgeInsets.all(20.0),
+                child: Column(
+                  children: <Widget>[
+                    Container(
+                      width: double.infinity,
+                      height: 200,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(20),
+                          image: DecorationImage(
+                              image: AssetImage('assets/bookHome.jpg'),
+                              fit: BoxFit.cover)),
+                      child: Container(
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(20),
+                            gradient: LinearGradient(
+                                begin: Alignment.bottomRight,
+                                colors: [
+                                  Colors.black.withOpacity(.4),
+                                  Colors.black.withOpacity(.2),
+                                ])),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: <Widget>[
+                            Text(
+                              "Book is life",
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 35,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                            SizedBox(
+                              height: 30,
+                            ),
+                            Container(
+                              height: 50,
+                              margin: EdgeInsets.symmetric(horizontal: 75),
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(10),
+                                  color: Colors.black87),
+                              child: Center(
+                                  child: Text(
+                                "Search a book",
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.white),
+                              )),
+                            ),
+                            SizedBox(
+                              height: 30,
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    Expanded(
+                        child: Padding(
+                      padding: EdgeInsets.only(top: 5),
+                      child: GridView.builder(
+                          itemCount: book.length,
+                          gridDelegate:
+                              SliverGridDelegateWithFixedCrossAxisCount(
+                            childAspectRatio: 3 / 3,
+                            crossAxisCount: 2,
+                            crossAxisSpacing: 10,
+                            mainAxisSpacing: 10,
+                          ),
+                          itemBuilder: (ctx, i) {
+                            return SingleBook(
+                              id: book[i].id,
+                              title: book[i].title,
+                              image: book[i].image,
+                              favorite: book[i].favorite,
+                            );
+                          }),
+                    ))
+                  ],
+                ),
               ),
             ),
           ));
