@@ -45,10 +45,19 @@ class _HomeScreenState extends State<HomeScreen> {
     else
       return Container(
           decoration: BoxDecoration(
-              gradient: LinearGradient(
-                  begin: Alignment.bottomLeft,
-                  end: Alignment.topRight,
-                  colors: [Colors.grey, Colors.orangeAccent])),
+            gradient: LinearGradient(
+                begin: Alignment.bottomLeft,
+                end: Alignment.topRight,
+                colors: [Colors.grey, Colors.orangeAccent]),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.grey.withOpacity(0.5),
+                spreadRadius: 5,
+                blurRadius: 7,
+                offset: Offset(0, 3), // changes position of shadow
+              ),
+            ],
+          ),
           child: Scaffold(
             backgroundColor: Colors.transparent,
             extendBodyBehindAppBar: true,
@@ -77,13 +86,21 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
             body: SafeArea(
               child: Container(
-                padding: EdgeInsets.all(20.0),
+                padding: EdgeInsets.all(15),
                 child: Column(
                   children: <Widget>[
                     Container(
                       width: double.infinity,
-                      height: 200,
+                      height: 180,
                       decoration: BoxDecoration(
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.black.withOpacity(0.5),
+                              spreadRadius: 5,
+                              blurRadius: 7,
+                              offset: Offset(0, 3),
+                            ),
+                          ],
                           borderRadius: BorderRadius.circular(20),
                           image: DecorationImage(
                               image: AssetImage('assets/bookHome.jpg'),
@@ -114,7 +131,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               height: 50,
                               margin: EdgeInsets.symmetric(horizontal: 75),
                               decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(10),
+                                  borderRadius: BorderRadius.circular(15),
                                   color: Colors.black87),
                               child: Center(
                                   child: Text(
@@ -136,7 +153,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                     Expanded(
                         child: Padding(
-                      padding: EdgeInsets.only(top: 5),
+                      padding: EdgeInsets.only(top: 3),
                       child: GridView.builder(
                           itemCount: book.length,
                           gridDelegate:

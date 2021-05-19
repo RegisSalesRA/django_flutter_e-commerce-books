@@ -25,11 +25,13 @@ class SingleBook extends StatelessWidget {
                 arguments: id,
               );
             },
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(20),
-              child: Image.network(
-                "$baseUrl:8000$image",
-                fit: BoxFit.cover,
+            child: Container(
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(20),
+                child: Image.network(
+                  "$baseUrl:8000$image",
+                  fit: BoxFit.cover,
+                ),
               ),
             ),
           ),
