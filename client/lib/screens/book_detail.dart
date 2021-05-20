@@ -61,7 +61,7 @@ class BookDetails extends StatelessWidget {
           ),
           body: SafeArea(
             child: Container(
-                padding: EdgeInsets.all(15),
+                padding: EdgeInsets.all(5),
                 child: Column(children: <Widget>[
                   Container(
                     decoration: BoxDecoration(
@@ -107,6 +107,9 @@ class BookDetails extends StatelessWidget {
                                     children: [
                                       Column(
                                         children: [
+                                          SizedBox(
+                                            height: 20,
+                                          ),
                                           Text(
                                             "Market Price : \$${book.marcketPrice.toString()}",
                                             style: TextStyle(
@@ -122,24 +125,6 @@ class BookDetails extends StatelessWidget {
                                         ],
                                       ),
                                       // ignore: deprecated_member_use
-                                      RaisedButton.icon(
-                                        color: Colors.orangeAccent,
-                                        onPressed: () {
-                                          Provider.of<CartState>(context,
-                                                  listen: false)
-                                              .addtoCart(id);
-                                        },
-                                        icon: Icon(
-                                          Icons.shopping_cart,
-                                          color: Colors.white,
-                                        ),
-                                        label: Text(
-                                          "Add to cart",
-                                          style: TextStyle(
-                                            color: Colors.white,
-                                          ),
-                                        ),
-                                      )
                                     ],
                                   ),
                                   SizedBox(
@@ -150,6 +135,29 @@ class BookDetails extends StatelessWidget {
                                       book.description,
                                       style: TextStyle(
                                           color: Colors.black, fontSize: 20),
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    height: 20,
+                                  ),
+                                  Center(
+                                    child: RaisedButton.icon(
+                                      color: Colors.orangeAccent,
+                                      onPressed: () {
+                                        Provider.of<CartState>(context,
+                                                listen: false)
+                                            .addtoCart(id);
+                                      },
+                                      icon: Icon(
+                                        Icons.shopping_cart,
+                                        color: Colors.white,
+                                      ),
+                                      label: Text(
+                                        "Add to cart",
+                                        style: TextStyle(
+                                          color: Colors.white,
+                                        ),
+                                      ),
                                     ),
                                   )
                                 ],
