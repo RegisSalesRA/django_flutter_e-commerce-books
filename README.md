@@ -5,24 +5,23 @@ Follow Steps:
 # Python
 
 First Step:
-
-    pip install -r requirements-dev.txt
+    
+    python3 -m venv venv
+    sourve venv/bin/activate
+    pip3 install -r requirements-dev.txt
         
 Second Step:
 
     Now, just rename the .env.sample file to .env and run:
+    
 
 Third Step:
 
-    python manage.py migrate
+    python3 manage.py migrate
 
 Fourth Step:
 
     python3 manage.py createsuperuser
-    
-Fifth Step:
- 
-    login admin and go to group section and create a group name called Customer first letter must be uppercase
     
 Finally
 
@@ -30,6 +29,9 @@ Finally
 
 # Flutter
 
+# OBS 
+
+    lib/service/api_adress.dart (const String baseUrl = "http://10.0.2.2";) you must change your IP if you trying to run this project with real mobile
 
 First Step:
 
@@ -49,5 +51,8 @@ Second Step:
 # Home
 <img src="/assets/Home.png" >
 
+# Layout drawer
+<img src="assets/Index.png" >
+
 # Favorite
-<img src="/assets/Favorite.png" >
+<img src="/assets/Favorites.png" >
