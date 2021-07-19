@@ -1,9 +1,6 @@
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:client/api/book_api.dart';
 import 'dart:convert';
-
-import 'book_detail.dart';
 
 class SearchBook extends StatefulWidget {
   static const routeName = '/search-books';
@@ -15,7 +12,7 @@ class _SearchBookState extends State<SearchBook> {
   List<dynamic> searchResults = [];
 
   searchBookData(value) async {
-    SearchBooks.searchBook(value).then((responseBody) {
+    BookState.searchBook(value).then((responseBody) {
       List<dynamic> data = jsonDecode(responseBody);
       setState(() {
         data.forEach((value) {
@@ -28,7 +25,10 @@ class _SearchBookState extends State<SearchBook> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        title: Text("Pesquisa de livros"),
+        centerTitle: true,
+      ),
       body: (ListView(
         children: [
           Padding(
@@ -74,29 +74,17 @@ class _SearchBookState extends State<SearchBook> {
 }
 
 Widget buildResultCard(data) {
-  print(data);
-  return InkWell(
-      onTap: () {
-        //  Navigator.of(context).pushNamed(
-        //           BookDetails.routeName,
-        //           arguments: id,
-        //         );
-      },
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Column(
-          children: <Widget>[
-            ListTile(
-              onTap: () {
-                //     Navigator.of(context).pushNamed(
-                //  BookDetails.routeName,
-                // arguments: id,
-                // );
-              },
-              title: Text(data['title']),
-            ),
-            Divider(color: Colors.black)
-          ],
+  // print(data);
+  return Padding(
+    padding: const EdgeInsets.all(8.0),
+    child: Column(
+      children: <Widget>[
+        ListTile(
+          subtitle: Text(data['title']),
+          title: Text(data['id'].toString()),
         ),
-      ));
+        Divider(color: Colors.black)
+      ],
+    ),
+  );
 }

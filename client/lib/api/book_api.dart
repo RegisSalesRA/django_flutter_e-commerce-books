@@ -6,16 +6,16 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:localstorage/localstorage.dart';
 
-class SearchBooks {
-  LocalStorage storage = new LocalStorage('usertoken');
-  static Future<String> searchBook(String query) async {
-    String url = '$baseUrl:8000/api/v1/books-filter/?search=$query';
+// class SearchBooks {
+//   LocalStorage storage = new LocalStorage('usertoken');
+//   static Future<String> searchBook(String query) async {
+//     String url = '$baseUrl:8000/api/v1/books-filter/?search=$query';
 
-    http.Response response = await http.get(url);
+//     http.Response response = await http.get(url);
 
-    return response.body;
-  }
-}
+//     return response.body;
+//   }
+// }
 
 class BookState with ChangeNotifier {
   LocalStorage storage = new LocalStorage('usertoken');
@@ -44,6 +44,16 @@ class BookState with ChangeNotifier {
       print(e);
       return false;
     }
+  }
+
+  static Future<String> searchBook(String query) async {
+    String url = '$baseUrl:8000/api/v1/books-filter/?search=$query';
+    //  var token = storage.getItem('token');
+    http.Response response = await http.get(url, headers: {
+      "Content-Type": "application/json",
+      //  'Authorization': "token $token"
+    });
+    return response.body;
   }
 
   Future<void> favoriteButton(int id) async {
