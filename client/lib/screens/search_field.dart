@@ -3,7 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:client/api/book_api.dart';
 import 'dart:convert';
 
+import 'book_detail.dart';
+
 class SearchBook extends StatefulWidget {
+  static const routeName = '/search-books';
   @override
   _SearchBookState createState() => _SearchBookState();
 }
@@ -72,15 +75,28 @@ class _SearchBookState extends State<SearchBook> {
 
 Widget buildResultCard(data) {
   print(data);
-  return Padding(
-    padding: const EdgeInsets.all(8.0),
-    child: Column(
-      children: <Widget>[
-        ListTile(
-          title: Text(data['title']),
+  return InkWell(
+      onTap: () {
+        //  Navigator.of(context).pushNamed(
+        //           BookDetails.routeName,
+        //           arguments: id,
+        //         );
+      },
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Column(
+          children: <Widget>[
+            ListTile(
+              onTap: () {
+                //     Navigator.of(context).pushNamed(
+                //  BookDetails.routeName,
+                // arguments: id,
+                // );
+              },
+              title: Text(data['title']),
+            ),
+            Divider(color: Colors.black)
+          ],
         ),
-        Divider(color: Colors.black)
-      ],
-    ),
-  );
+      ));
 }

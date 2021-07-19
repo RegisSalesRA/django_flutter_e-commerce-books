@@ -1,3 +1,4 @@
+import 'package:client/screens/search_field.dart';
 import 'package:flutter/material.dart';
 import 'package:client/screens/favorite_screen.dart';
 import 'package:client/screens/home_screen.dart';
@@ -56,6 +57,7 @@ class MyApp extends StatelessWidget {
             CartScreens.routeName: (ctx) => CartScreens(),
             OrderScreens.routeName: (ctx) => OrderScreens(),
             OrderNew.routeName: (ctx) => OrderNew(),
+            SearchBook.routeName: (ctx) => SearchBook(),
           }),
     );
   }

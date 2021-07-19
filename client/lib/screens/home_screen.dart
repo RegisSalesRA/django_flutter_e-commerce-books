@@ -48,7 +48,7 @@ class _HomeScreenState extends State<HomeScreen> {
             gradient: LinearGradient(
                 begin: Alignment.bottomLeft,
                 end: Alignment.topRight,
-                colors: [Colors.grey, Colors.orangeAccent]),
+                colors: [Colors.white, Colors.orange]),
             boxShadow: [
               BoxShadow(
                 color: Colors.grey.withOpacity(0.5),
@@ -127,20 +127,29 @@ class _HomeScreenState extends State<HomeScreen> {
                             SizedBox(
                               height: 30,
                             ),
+                            //  Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => NovaPagina()));
                             Container(
-                              height: 50,
-                              margin: EdgeInsets.symmetric(horizontal: 75),
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(15),
-                                  color: Colors.black87),
-                              child: Center(
-                                  child: Text(
-                                "Search a book",
-                                style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.white),
-                              )),
-                            ),
+                                height: 50,
+                                margin: EdgeInsets.symmetric(horizontal: 75),
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(15),
+                                    color: Colors.black87),
+                                child: InkWell(
+                                  onTap: () {
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (BuildContext context) =>
+                                                SearchBook()));
+                                  },
+                                  child: Center(
+                                      child: Text(
+                                    "Search a book",
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.white),
+                                  )),
+                                )),
                             SizedBox(
                               height: 30,
                             ),
