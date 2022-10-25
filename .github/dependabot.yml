@@ -9,13 +9,11 @@ updates:
     directory: "/client/" # Location of package manifests
     schedule:
       interval: "daily"
-  - package-ecosystem: 'pip' # See documentation for possible values
-    directory: '/' # Location of package manifests
-    open-pull-requests-limit: 25
+  - package-ecosystem: 'pip'
+    directory: '/'
     schedule:
       interval: 'daily'
-  - package-ecosystem: 'github-actions' # See documentation for possible values
-    directory: '/' # Location of package manifests
-    open-pull-requests-limit: 25
+  - package-ecosystem: 'github-actions'
+    directory: '/.github/workflows/continuous-integration.yml.' # Location of package manifests
     schedule:
       interval: 'daily'
