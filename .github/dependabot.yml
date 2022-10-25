@@ -19,7 +19,7 @@ updates:
 
 
  - package-ecosystem: 'github-actions' # See documentation for possible values
-   directory: '.github/dependabot.yml' # Location of package manifests
+   directory: '/' # Location of package manifests
    open-pull-requests-limit: 10
    schedule:
      interval: 'daily'
