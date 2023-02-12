@@ -1,7 +1,7 @@
 asgiref==3.5.2
 Django>=3.2.11
 djangorestframework==3.14.0
-drf-yasg==1.21.4
+drf-yasg==1.21.5
 Pillow>=9.0.0
 python-dotenv==0.21.0
 pytz==2022.6
